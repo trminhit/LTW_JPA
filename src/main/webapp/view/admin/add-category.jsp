@@ -1,39 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Thêm Danh mục mới</title>
+<title>Thêm Danh mục</title>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-</head>
-<body class="container mt-4">
+<div class="card shadow mb-4" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Thêm mới danh mục</h6>
+    </div>
+    <div class="card-body">
+        <form action="<c:url value='/admin/category/add'/>" method="post" enctype="multipart/form-data">
+            
+            <div class="mb-3">
+                <label class="form-label">Mã danh mục (Code):</label>
+                <input type="text" class="form-control" name="categoryCode" required>
+            </div>
 
-	<h2>Thêm Danh mục mới</h2>
-	
-	<c:url value="/admin/category/add" var="addURL" />
-	
-	<form action="${addURL}" method="post" enctype="multipart/form-data">
-		<div class="mb-3">
-			<label for="catename" class="form-label">Tên danh mục:</label>
-			
-			<input type="text" class="form-control" id="catename"
-				name="catename" placeholder="Ví dụ: Quần Áo Trẻ Em" required>
-		</div>
+            <div class="mb-3">
+                <label class="form-label">Tên danh mục:</label>
+                <input type="text" class="form-control" name="categoryName" required>
+            </div>
 
-		<div class="mb-3">
-			<label for="icon" class="form-label">Ảnh đại diện (Icon):</label>
-			<input type="file" class="form-control" id="icon" name="icon">
-		</div>
+            <div class="mb-3">
+                <label class="form-label">Hình ảnh:</label>
+                <input type="file" class="form-control" name="images">
+            </div>
 
-		<button type="submit" class="btn btn-primary">Thêm mới</button>
-		<a href="<c:url value='/admin/category/list' />" class="btn btn-secondary">Hủy</a>
-	</form>
+            <div class="mb-3">
+                <label class="form-label">Trạng thái:</label>
+                <select class="form-select" name="status">
+                    <option value="1">Hoạt động</option>
+                    <option value="0">Khóa</option>
+                </select>
+            </div>
 
-</body>
-</html>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Lưu lại</button>
+                <a href="<c:url value='/admin/category/list'/>" class="btn btn-secondary">Hủy bỏ</a>
+            </div>
+        </form>
+    </div>
+</div>

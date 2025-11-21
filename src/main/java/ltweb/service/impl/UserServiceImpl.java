@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService {
     public boolean checkExistPhone(String phone) {
         return userRepo.checkExistPhone(phone);
     }
+    
+    @Override
+    public void update(User user) {
+        userRepo.update(user);
+    }
 }

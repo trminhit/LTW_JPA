@@ -1,0 +1,8 @@
+<sitemesh>
+    <mapping path="/*" decorator="/main.jsp"/>
+
+    <mapping path="/login" exclude="true"/>
+    <mapping path="/register" exclude="true"/>
+    <mapping path="/forgot-password" exclude="true"/>
+    <mapping path="/reset-password" exclude="true"/>
+</sitemesh>

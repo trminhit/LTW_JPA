@@ -1,27 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Manager Dashboard</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
-    <div class="card">
-        <div class="card-header bg-warning text-dark">
-            <h3>Khu vực Quản lý (Manager)</h3>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Xin chào, ${sessionScope.account.fullname} (Manager)</h5>
-            <p class="card-text">Đây là trang chức năng dành cho cấp quản lý.</p>
-            
-            <a href="#" class="btn btn-primary">Quản lý Đơn hàng</a>
-            <a href="#" class="btn btn-primary">Xem Báo cáo</a>
-            
-            <hr>
-            <a href="<c:url value='/logout'/>" class="btn btn-danger">Đăng xuất</a>
-        </div>
+
+<title>Trang chủ User</title>
+
+<div class="jumbotron bg-light p-5 rounded shadow-sm">
+    <h1 class="display-4">Xin chào, ${sessionScope.account.fullname}!</h1>
+    <p class="lead">Chào mừng bạn quay trở lại hệ thống mua sắm.</p>
+    <hr class="my-4">
+    <p>Bạn đang đăng nhập với quyền: <b>User (Khách hàng)</b></p>
+    
+    <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-primary btn-lg" href="#">Xem sản phẩm</a>
+        <a class="btn btn-success btn-lg" href="#">Giỏ hàng</a>
+        
+        <a class="btn btn-info btn-lg text-white" href="<c:url value='/profile'/>" role="button">
+            Thông tin cá nhân
+        </a>
     </div>
-</body>
-</html>
+</div>

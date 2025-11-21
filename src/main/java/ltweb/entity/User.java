@@ -47,6 +47,9 @@ public class User implements Serializable{
 	@Column(name="CreatedDate")
 	private Date createddate;
 	
+	@Column(name="Active")
+	private boolean active;
+	
 	@OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Category> categories;
 }

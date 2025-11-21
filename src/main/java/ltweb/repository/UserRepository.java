@@ -11,4 +11,5 @@ public interface UserRepository {
     boolean checkExistUsername(String username);
     boolean checkExistPhone(String phone);
 	void changePassword(String email, String newPassword);
+	void update(User user);
 }

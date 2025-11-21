@@ -18,4 +18,6 @@ public interface UserService {
 
 	User findByEmail(String email);
 
+	void update(User user);
+
 }

@@ -7,6 +7,7 @@
 	<persistence-unit name="jpa-hibernate-sql">
 		<class>ltweb.entity.User</class>
 		<class>ltweb.entity.Category</class>
+		<class>ltweb.entity.Video</class>
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpact4" />

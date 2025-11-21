@@ -39,6 +39,7 @@ public class UserRepositoryImpl implements UserRepository {
             enma.close();
         }
     }
+    
 
     @Override
     public User findByPhone(String phone) {
@@ -86,6 +87,22 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (Exception e) {
             trans.rollback();
             e.printStackTrace();
+        } finally {
+            enma.close();
+        }
+    }
+    @Override
+    public void update(User user) {
+        EntityManager enma = JPAConfig.getEntityManager();
+        EntityTransaction trans = enma.getTransaction();
+        try {
+            trans.begin();
+            enma.merge(user); // Hàm merge dùng để update
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            trans.rollback();
+            throw e;
         } finally {
             enma.close();
         }

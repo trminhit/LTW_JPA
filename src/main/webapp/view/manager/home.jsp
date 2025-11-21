@@ -1,27 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Manager Dashboard</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-5">
-    <div class="card">
-        <div class="card-header bg-warning text-dark">
-            <h3>Khu vực Quản lý (Manager)</h3>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Xin chào, ${sessionScope.account.fullname} (Manager)</h5>
-            <p class="card-text">Đây là trang chức năng dành cho cấp quản lý.</p>
-            
-            <a href="#" class="btn btn-primary">Quản lý Đơn hàng</a>
-            <a href="#" class="btn btn-primary">Xem Báo cáo</a>
-            
-            <hr>
-            <a href="<c:url value='/logout'/>" class="btn btn-danger">Đăng xuất</a>
+
+<title>Admin Dashboard</title>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Thông tin Quản trị viên</h4>
+            </div>
+            <div class="card-body text-center">
+                
+                <div class="mb-3">
+                    <c:if test="${sessionScope.account.avatar != null}">
+                        <img src="<c:url value='/image?fname=${sessionScope.account.avatar}'/>" 
+                             class="rounded-circle border border-3 border-primary p-1" 
+                             width="150" height="150" style="object-fit: cover;">
+                    </c:if>
+                    <c:if test="${sessionScope.account.avatar == null}">
+                        <img src="https://via.placeholder.com/150" class="rounded-circle border" width="150">
+                    </c:if>
+                </div>
+
+                <h3>${sessionScope.account.fullname}</h3>
+                <p class="text-muted">${sessionScope.account.email}</p>
+                
+                <hr>
+                
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <a href="<c:url value='/admin/category/list'/>" class="btn btn-outline-primary btn-lg px-4">
+                        Quản lý Danh mục
+                    </a>
+                    <a href="<c:url value='/profile'/>" class="btn btn-outline-info btn-lg px-4">
+                        Cập nhật Profile
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>
