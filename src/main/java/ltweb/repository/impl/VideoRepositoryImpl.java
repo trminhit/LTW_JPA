@@ -1,20 +1,22 @@
-package ltweb.dao.impl;
+package ltweb.repository.impl;
 
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import ltweb.config.JPAConfig;
-import ltweb.entity.Category;
+import ltweb.entity.Video;
+import ltweb.repository.VideoRepository;
 
-public class CategoryDao {
+public class VideoRepositoryImpl implements VideoRepository {
 
-    public void insert(Category category) {
+    @Override
+    public void insert(Video video) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
         try {
             trans.begin();
-            enma.persist(category);
+            enma.persist(video);
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -24,12 +26,13 @@ public class CategoryDao {
         }
     }
 
-    public void update(Category category) {
+    @Override
+    public void update(Video video) {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
         try {
             trans.begin();
-            enma.merge(category);
+            enma.merge(video);
             trans.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,16 +42,15 @@ public class CategoryDao {
         }
     }
 
-    public void delete(int cateid) throws Exception {
+    @Override
+    public void delete(String videoId) throws Exception {
         EntityManager enma = JPAConfig.getEntityManager();
         EntityTransaction trans = enma.getTransaction();
         try {
             trans.begin();
-            Category category = enma.find(Category.class, cateid);
-            if (category != null) {
-                enma.remove(category);
-            } else {
-                throw new Exception("Không tìm thấy danh mục");
+            Video video = enma.find(Video.class, videoId);
+            if (video != null) {
+                enma.remove(video);
             }
             trans.commit();
         } catch (Exception e) {
@@ -60,14 +62,25 @@ public class CategoryDao {
         }
     }
 
-    public Category findById(int cateid) {
+    @Override
+    public Video findById(String videoId) {
         EntityManager enma = JPAConfig.getEntityManager();
-        return enma.find(Category.class, cateid);
+        return enma.find(Video.class, videoId);
     }
 
-    public List<Category> findAll() {
+    @Override
+    public List<Video> findAll() {
         EntityManager enma = JPAConfig.getEntityManager();
-        TypedQuery<Category> query = enma.createNamedQuery("Category.findAll", Category.class);
+        TypedQuery<Video> query = enma.createNamedQuery("Video.findAll", Video.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Video> findByTitle(String title) {
+        EntityManager enma = JPAConfig.getEntityManager();
+        String jpql = "SELECT v FROM Video v WHERE v.title LIKE :title";
+        TypedQuery<Video> query = enma.createQuery(jpql, Video.class);
+        query.setParameter("title", "%" + title + "%");
         return query.getResultList();
     }
 }

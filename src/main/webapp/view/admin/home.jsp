@@ -31,7 +31,7 @@
                     <a href="<c:url value='/admin/category/list'/>" class="btn btn-outline-primary btn-lg px-4">
                         Quản lý Danh mục
                     </a>
-                    <a href="#" class="btn btn-outline-success btn-lg px-4">
+                    <a href="<c:url value='/admin/video/list'/>" class="btn btn-outline-success btn-lg px-4">
                         Quản lý Video
                     </a>
                     <a href="<c:url value='/profile'/>" class="btn btn-outline-info btn-lg px-4">

@@ -39,7 +39,8 @@ public class Category implements Serializable{
 	@JoinColumn(name = "UserID")  
 	private User user;
 	
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+	// Thêm cascade = CascadeType.ALL: khi xóa Category thì xóa luôn Video thuộc về nó
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Video> videos;
 	
 
