@@ -18,4 +18,8 @@ public interface VideoService {
 
 	List<Video> findByTitle(String title);
 
+	List<Video> findByCategoryId(int categoryId);
+
+	List<Video> findByUserId(int userId);
+
 }

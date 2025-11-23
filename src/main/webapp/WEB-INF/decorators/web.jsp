@@ -12,13 +12,13 @@
     <sitemesh:write property="head"/>
 </head>
 <body>
-    <%@ include file="/common/header.jsp" %>
+    <%@ include file="/common/main/header.jsp" %>
 
     <div class="container mt-4">
         <sitemesh:write property="body"/>
     </div>
 
-    <%@ include file="/common/footer.jsp" %>
+    <%@ include file="/common/main/footer.jsp" %>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

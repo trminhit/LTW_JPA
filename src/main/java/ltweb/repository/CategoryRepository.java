@@ -13,5 +13,7 @@ public interface CategoryRepository {
     void update(Category category);
     
     void delete(int id) throws Exception;
+
+	List<Category> findByUserId(int userId);
     
 }

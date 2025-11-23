@@ -76,5 +76,14 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         TypedQuery<Category> query = enma.createNamedQuery("Category.findAll", Category.class);
         return query.getResultList();
     }
+    
+    @Override
+    public List<Category> findByUserId(int userId) {
+        EntityManager enma = JPAConfig.getEntityManager();
+        String jpql = "SELECT c FROM Category c WHERE c.user.userId = :userId";
+        TypedQuery<Category> query = enma.createQuery(jpql, Category.class);
+        query.setParameter("userId", userId);
+        return query.getResultList();
+    }
 
 }

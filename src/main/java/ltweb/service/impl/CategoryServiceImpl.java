@@ -38,5 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
             e.printStackTrace();
         }
     }
+    
+    @Override
+    public List<Category> findByUserId(int userId) {
+        return categoryRepo.findByUserId(userId);
+    }
 
 }

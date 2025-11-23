@@ -83,4 +83,31 @@ public class VideoRepositoryImpl implements VideoRepository {
         query.setParameter("title", "%" + title + "%");
         return query.getResultList();
     }
+    
+    @Override
+    public List<Video> findByCategoryId(int categoryId) {
+        EntityManager enma = JPAConfig.getEntityManager();
+        try {
+            String jpql = "SELECT v FROM Video v WHERE v.category.categoryId = :categoryId";
+            TypedQuery<Video> query = enma.createQuery(jpql, Video.class);
+            query.setParameter("categoryId", categoryId);
+            return query.getResultList();
+        } finally {
+            enma.close();
+        }
+    }
+    
+    @Override
+    public List<Video> findByUserId(int userId) {
+        EntityManager enma = JPAConfig.getEntityManager();
+        try {
+            // Lấy Video mà Category của nó thuộc về User có ID tương ứng
+            String jpql = "SELECT v FROM Video v WHERE v.category.user.userId = :userId";
+            TypedQuery<Video> query = enma.createQuery(jpql, Video.class);
+            query.setParameter("userId", userId);
+            return query.getResultList();
+        } finally {
+            enma.close();
+        }
+    }
 }

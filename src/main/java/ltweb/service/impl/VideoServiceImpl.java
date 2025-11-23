@@ -33,4 +33,14 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<Video> findByTitle(String title) { return videoRepo.findByTitle(title); }
+    
+    @Override
+    public List<Video> findByCategoryId(int categoryId) {
+        return videoRepo.findByCategoryId(categoryId);
+    }
+    
+    @Override
+    public List<Video> findByUserId(int userId) {
+        return videoRepo.findByUserId(userId);
+    }
 }
